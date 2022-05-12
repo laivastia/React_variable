@@ -4,3 +4,11 @@
     node_modules 만 다운 받는 커맨드
 3. npm run start
     개발자 모드 시작 시키는 커맨드
+4. JSX 문법과 html 작성 방식과 다름
+    class => className / for => htmlfor / onblur => onBlur 등
+5. redering 시 하나의 태그로 만들어 줘야함
+    <div>
+        <h></h>
+        <p></p>
+    </div>처럼
+    <Fragment></Fragment> 활용하거나 <></> 를 사용하여 하나의 태그로 적용
