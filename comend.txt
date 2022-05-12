@@ -1,0 +1,6 @@
+1. npm init react-app .
+    리액트에서 권장하는 npm 리엑트 프로젝트 구축 커맨드
+2. npm install
+    node_modules 만 다운 받는 커맨드
+3. npm run start
+    개발자 모드 시작 시키는 커맨드
