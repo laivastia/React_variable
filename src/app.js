@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Button from "./button";
+import Reset from "./reset.js";
 import HandButton from "./HandButton";
 import HandIcon from "./handicon";
 import { compareHand, generateRandomHand } from "./utils";
+import AppScores from "./Score.js";
 
 const INITIAL_VALUE = "rock";
 
@@ -32,6 +33,7 @@ function App() {
     if (comparison > 0) return setScore(score + bet);
     if (comparison < 0) return setOtherScore(otherScore + bet);
   };
+
   const handleClearClick = () => {
     setHand(INITIAL_VALUE);
     setOtherHand(INITIAL_VALUE);
@@ -51,17 +53,21 @@ function App() {
   };
 
   return (
-    <div>
-      <Button onClick={handleClearClick}>처음부터</Button>
-      <div>
-        {score} : {otherScore}
+    <div className="App">
+      <h1 className="App-heading">가위바위보</h1>
+      <Reset onClick={handleClearClick} />
+      <AppScores score={score} otherScore={otherScore} />
+      <div className="App-hands">
+        <div className="Hand">
+          <HandIcon className="Hand-icon" value={Hand} />
+        </div>
+        <div class="App-versus">VS</div>
+        <div className="Hand">
+          <HandIcon className="Hand-icon" value={otherHand} />
+        </div>
       </div>
-      <div>
-        <HandIcon value={Hand} />
-        VS
-        <HandIcon value={otherHand} />
-      </div>
-      <div>
+      <div className="App-bet">
+        <span>배점</span>
         <input
           type="number"
           value={bet}
@@ -69,8 +75,12 @@ function App() {
           max={9}
           onChange={handleBetChange}
         ></input>
+        <spam>배</spam>
       </div>
-      <p>승부 기록: {gameHistory.join(", ")}</p>
+      <div className="App-history">
+        <h2>승부 기록</h2>
+        <p>{gameHistory.join(", ")}</p>
+      </div>
       <div>
         <HandButton value="rock" onClick={handleClick} />
         <HandButton value="scissor" onClick={handleClick} />
