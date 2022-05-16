@@ -1,9 +1,12 @@
 import { useState } from "react";
-import Reset from "./reset.js";
-import HandButton from "./HandButton";
-import HandIcon from "./handicon";
-import { compareHand, generateRandomHand } from "./utils";
-import AppScores from "./Score.js";
+import Reset from "../reset.js";
+import HandButton from "../HandButton";
+import { compareHand, generateRandomHand } from "../utils/utils";
+import AppScores from "../Score.js";
+import "../style/rcp.css";
+import { AppBet } from "../appbet.js";
+import { AppHistory } from "../appHistory.js";
+import { AppHands } from "../appHands.js";
 
 const INITIAL_VALUE = "rock";
 
@@ -57,30 +60,11 @@ function App() {
       <h1 className="App-heading">가위바위보</h1>
       <Reset onClick={handleClearClick} />
       <AppScores score={score} otherScore={otherScore} />
-      <div className="App-hands">
-        <div className="Hand">
-          <HandIcon className="Hand-icon" value={Hand} />
-        </div>
-        <div class="App-versus">VS</div>
-        <div className="Hand">
-          <HandIcon className="Hand-icon" value={otherHand} />
-        </div>
-      </div>
-      <div className="App-bet">
-        <span>배점</span>
-        <input
-          type="number"
-          value={bet}
-          min={1}
-          max={9}
-          onChange={handleBetChange}
-        ></input>
-        <spam>배</spam>
-      </div>
-      <div className="App-history">
-        <h2>승부 기록</h2>
-        <p>{gameHistory.join(", ")}</p>
-      </div>
+      {/*  */}
+      <AppHands hand={Hand} otherHand={otherHand} />
+      <AppBet onChange={handleBetChange} bet={bet} />
+      <AppHistory gameHistory={gameHistory} />
+      {/*  */}
       <div>
         <HandButton value="rock" onClick={handleClick} />
         <HandButton value="scissor" onClick={handleClick} />
