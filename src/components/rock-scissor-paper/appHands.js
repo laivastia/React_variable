@@ -4,7 +4,7 @@ export function AppHands({ hand, otherHand }) {
   return (
     <div className="App-hands">
       <PrintHand>{hand}</PrintHand>
-      <div class="App-versus">VS</div>
+      <div className="App-versus">VS</div>
       <PrintHand>{otherHand}</PrintHand>
     </div>
   );

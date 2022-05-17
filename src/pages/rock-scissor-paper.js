@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Reset from "../reset.js";
-import HandButton from "../HandButton";
+import Reset from "../components/rock-scissor-paper/reset.js";
+import HandButton from "../components/rock-scissor-paper/HandButton";
 import { compareHand, generateRandomHand } from "../utils/utils";
-import AppScores from "../Score.js";
+import AppScores from "../components/rock-scissor-paper/Score.js";
 import "../style/rcp.css";
-import { AppBet } from "../appbet.js";
-import { AppHistory } from "../appHistory.js";
-import { AppHands } from "../appHands.js";
+import { AppBox } from "../components/rock-scissor-paper/AppBox.js";
 
 const INITIAL_VALUE = "rock";
 
@@ -45,12 +43,10 @@ function App() {
     setScore(0);
     setOtherScore(0);
   };
-  const handleBetChange = (e) => {
-    let num = Number(e.target.value);
+  const handleBetChange = (tar) => {
+    let num = Number(tar.target.value);
     if (num > 9) num %= 10;
-    if (num < 1) {
-      num = 1;
-    }
+    if (num < 1) num = 1;
     num = Math.floor(num);
     setBet(num);
   };
@@ -60,11 +56,13 @@ function App() {
       <h1 className="App-heading">가위바위보</h1>
       <Reset onClick={handleClearClick} />
       <AppScores score={score} otherScore={otherScore} />
-      {/*  */}
-      <AppHands hand={Hand} otherHand={otherHand} />
-      <AppBet onChange={handleBetChange} bet={bet} />
-      <AppHistory gameHistory={gameHistory} />
-      {/*  */}
+      <AppBox
+        Hand={Hand}
+        otherHand={otherHand}
+        onChange={handleBetChange}
+        bet={bet}
+        gameHistory={gameHistory}
+      />
       <div>
         <HandButton value="rock" onClick={handleClick} />
         <HandButton value="scissor" onClick={handleClick} />
