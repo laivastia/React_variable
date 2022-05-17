@@ -1,4 +1,4 @@
-import reset_img from "./assets/rock-scissor-paper/ic-reset.svg";
+import reset_img from "../../assets/rock-scissor-paper/ic-reset.svg";
 
 function Reset({ onClick }) {
   const handleClearClick = () => onClick(onClick);

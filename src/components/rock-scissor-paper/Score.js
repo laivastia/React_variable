@@ -1,6 +1,6 @@
 function AppScores({ score, otherScore }) {
   return (
-    <div class="App-scores">
+    <div className="App-scores">
       <Score value={score}>{"나"}</Score>
       <div className="App-versus">:</div>
       <Score value={otherScore}>{"상대"}</Score>

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Reset from "./reset.js";
-import HandButton from "./HandButton";
-import HandIcon from "./handicon";
-import { compareHand, generateRandomHand } from "./utils";
-import AppScores from "./Score.js";
+import Reset from "../components/rock-scissor-paper/reset.js";
+import HandButton from "../components/rock-scissor-paper/HandButton";
+import { compareHand, generateRandomHand } from "../utils/utils";
+import AppScores from "../components/rock-scissor-paper/Score.js";
+import "../style/rcp.css";
+import { AppBox } from "../components/rock-scissor-paper/AppBox.js";
 
 const INITIAL_VALUE = "rock";
 
@@ -42,12 +43,10 @@ function App() {
     setScore(0);
     setOtherScore(0);
   };
-  const handleBetChange = (e) => {
-    let num = Number(e.target.value);
+  const handleBetChange = (tar) => {
+    let num = Number(tar.target.value);
     if (num > 9) num %= 10;
-    if (num < 1) {
-      num = 1;
-    }
+    if (num < 1) num = 1;
     num = Math.floor(num);
     setBet(num);
   };
@@ -57,30 +56,13 @@ function App() {
       <h1 className="App-heading">가위바위보</h1>
       <Reset onClick={handleClearClick} />
       <AppScores score={score} otherScore={otherScore} />
-      <div className="App-hands">
-        <div className="Hand">
-          <HandIcon className="Hand-icon" value={Hand} />
-        </div>
-        <div class="App-versus">VS</div>
-        <div className="Hand">
-          <HandIcon className="Hand-icon" value={otherHand} />
-        </div>
-      </div>
-      <div className="App-bet">
-        <span>배점</span>
-        <input
-          type="number"
-          value={bet}
-          min={1}
-          max={9}
-          onChange={handleBetChange}
-        ></input>
-        <spam>배</spam>
-      </div>
-      <div className="App-history">
-        <h2>승부 기록</h2>
-        <p>{gameHistory.join(", ")}</p>
-      </div>
+      <AppBox
+        Hand={Hand}
+        otherHand={otherHand}
+        onChange={handleBetChange}
+        bet={bet}
+        gameHistory={gameHistory}
+      />
       <div>
         <HandButton value="rock" onClick={handleClick} />
         <HandButton value="scissor" onClick={handleClick} />
