@@ -15,7 +15,7 @@ function getResult(me, other) {
   return "무승부";
 }
 
-function App() {
+function RSP() {
   const [Hand, setHand] = useState(INITIAL_VALUE);
   const [otherHand, setOtherHand] = useState(INITIAL_VALUE);
   const [gameHistory, setGameHistory] = useState([]);
@@ -72,4 +72,4 @@ function App() {
   );
 }
 
-export default App;
+export default RSP;

@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./pages/rock-scissor-paper";
+import Board from "./pages/board";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<Board />);

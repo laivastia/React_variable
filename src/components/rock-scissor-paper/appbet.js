@@ -1,5 +1,3 @@
-import HandButton from "./HandButton";
-
 function AppBet({ bet, onChange }) {
   return (
     <div className="App-bet">
